@@ -1,6 +1,6 @@
-OpenStack Juno Deployment with Vagrant (Open vSwitch + VXLAN)
+OpenStack Juno Deployment with Vagrant (Open vSwitch + GRE)
 =====================================
 Features
 ------------
 * Three Nodes (Controller, Network, Compute)
-* Open vSwitch with VXLAN tunneling
+* OpenvSwitch with GRE tunneling
