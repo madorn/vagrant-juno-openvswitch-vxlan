@@ -100,7 +100,7 @@ sudo sed -i 's|# enable_security_group = True|firewall_driver = neutron.agent.li
 
 [ovs]
 local_ip = $MY_IP
-tunnel_types = vxlan
+tunnel_type = vxlan
 enable_tunneling = True
 physical_interface_mappings = physnet1:br-ex
 
@@ -108,10 +108,6 @@ physical_interface_mappings = physnet1:br-ex
 l2_population = True
 tunnel_types = vxlan
 physical_interface_mappings = physnet1:br-ex
-
-[vxlan]
-enable_vxlan = True
-l2_population = True
 
 [l2pop]
 agent_boot_time = 180
