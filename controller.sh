@@ -286,7 +286,7 @@ sudo sed -i 's|# enable_security_group = True|firewall_driver = neutron.agent.li
 
 [ovs]
 local_ip = $MY_IP
-tunnel_types = vxlan
+tunnel_type = vxlan
 enable_tunneling = True
 physical_interface_mappings = physnet1:br-ex
 
