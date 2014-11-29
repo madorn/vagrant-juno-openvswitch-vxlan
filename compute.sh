@@ -88,13 +88,6 @@ physical_interface_mappings = physnet1:br-ex
 l2_population = True
 tunnel_types = vxlan
 physical_interface_mappings = physnet1:br-ex
-
-[vxlan]
-enable_vxlan = True
-l2_population = True
-
-[l2pop]
-agent_boot_time = 180
 EOF
 
 sudo service neutron-plugin-openvswitch-agent start
