@@ -297,7 +297,6 @@ physical_interface_mappings = physnet1:br-ex
 
 [vxlan]
 enable_vxlan = True
-vxlan_group = 224.0.0.1
 l2_population = True
 
 [l2pop]
