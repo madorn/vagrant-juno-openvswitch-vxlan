@@ -102,11 +102,12 @@ sudo sed -i 's|# enable_security_group = True|firewall_driver = neutron.agent.li
 local_ip = $MY_IP
 tunnel_type = vxlan
 enable_tunneling = True
-physical_interface_mappings = physnet:br-ex
+physical_interface_mappings = physnet1:br-ex
 
 [agent]
 l2_population = True
 tunnel_type = vxlan
+physical_interface_mappings = physnet1:br-ex
 
 [vxlan]
 enable_vxlan = True
