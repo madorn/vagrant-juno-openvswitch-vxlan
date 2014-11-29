@@ -80,18 +80,17 @@ sudo sed -i 's|# enable_security_group = True|firewall_driver = neutron.agent.li
 
 [ovs]
 local_ip = $MY_IP
-tunnel_type = vxlan
+tunnel_types = vxlan
 enable_tunneling = True
 physical_interface_mappings = physnet1:br-ex
 
 [agent]
 l2_population = True
-tunnel_type = vxlan
+tunnel_types = vxlan
 physical_interface_mappings = physnet1:br-ex
 
 [vxlan]
 enable_vxlan = True
-vxlan_group = 224.0.0.1
 l2_population = True
 
 [l2pop]
