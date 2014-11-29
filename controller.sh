@@ -274,9 +274,10 @@ sudo sed -i "s/# nova_admin_password =/nova_admin_password = notnova/g" /etc/neu
 sudo sed -i "s|# nova_admin_auth_url =|nova_admin_auth_url = http://$KEYSTONE_IP:35357/v2.0|g" /etc/neutron/neutron.conf
 
 # Configure Neutron ML2
-sudo sed -i 's|# type_drivers = local,flat,vlan,gre,vxlan|type_drivers = vxlan,flat|g' /etc/neutron/plugins/ml2/ml2_conf.ini
-sudo sed -i 's|# tenant_network_types = local|tenant_network_types = vxlan,flat|g' /etc/neutron/plugins/ml2/ml2_conf.ini
-sudo sed -i 's|# mechanism_drivers =|mechanism_drivers = openvswitch|g' /etc/neutron/plugins/ml2/ml2_conf.ini
+sudo sed -i 's|# type_drivers = local,flat,vlan,gre,vxlan|type_drivers = flat,vxlan|g' /etc/neutron/plugins/ml2/ml2_conf.ini
+sudo sed -i 's|# tenant_network_types = local|tenant_network_types = flat,vxlan|g' /etc/neutron/plugins/ml2/ml2_conf.ini
+sudo sed -i 's|# mechanism_drivers =|mechanism_drivers = openvswitch,l2population|g' /etc/neutron/plugins/ml2/ml2_conf.ini
+sudo sed -i 's|# flat_networks =|flat_networks = physnet1|g' /etc/neutron/plugins/ml2/ml2_conf.ini
 sudo sed -i 's|# vni_ranges =|vni_ranges = 100:500|g' /etc/neutron/plugins/ml2/ml2_conf.ini
 sudo sed -i 's|# enable_security_group = True|firewall_driver = neutron.agent.linux.iptables_firewall.OVSHybridIptablesFirewallDriver\nenable_security_group = True|g' /etc/neutron/plugins/ml2/ml2_conf.ini
 
@@ -288,7 +289,20 @@ local_ip = $MY_IP
 tunnel_type = vxlan
 enable_tunneling = True
 physical_interface_mappings = physnet:br-ex
+
+[agent]
+l2_population = True
+tunnel_type = vxlan
+
+[vxlan]
+enable_vxlan = True
+vxlan_group = 224.0.0.1
+l2_population = True
+
+[l2pop]
+agent_boot_time = 180
 EOF
+
 
 sudo neutron-db-manage --config-file /etc/neutron/neutron.conf --config-file /etc/neutron/plugins/ml2/ml2_conf.ini upgrade juno
 
