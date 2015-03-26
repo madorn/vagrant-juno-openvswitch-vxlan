@@ -119,6 +119,7 @@ neutron_admin_tenant_name=Services
 neutron_admin_username=neutron
 neutron_admin_password=notneutron
 neutron_admin_auth_url=http://$KEYSTONE_IP:35357/v2.0
+network_device_mtu=1450
 firewall_driver=nova.virt.firewall.NoopFirewallDriver
 security_group_api=neutron
 linuxnet_interface_driver=nova.network.linux_net.LinuxOVSInterfaceDriver
